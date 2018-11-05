@@ -56,11 +56,12 @@ describe('HotelCollection', ()=>{
         c.addHotel(hotel1);
         c.addHotel(hotel2);
 
-        c.hotels = ['some', 'nonsense'];
+        function something(){
+            c.hotels = ['some', 'nonsense'];
+        }
+        console.log(c.hotels);
 
-        expect(c.hotels.length).to.equal(2);
-        expect(c.hotels[0].name).to.equal("Hilton Metropole");
-        expect(c.hotels[1].city).to.equal("Leeds");
+        expect(something).to.throw('no');
     })
 
     it('should save properly', ()=>{

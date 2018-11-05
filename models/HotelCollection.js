@@ -3,12 +3,21 @@ var Hotel = require('../models/Hotel');
 
 class HotelCollection {
     constructor(){
-        this.hotels = [];
+        this._hotels = [];
+
+        //pls someone help me im stuck
     }
-    
+
+    set hotels(arg){
+        throw new Error('no');
+    }
+
+    get hotels(){
+        return this._hotels;
+    }
 
     addHotel(hotel){
-          this.hotels.push(hotel);
+        this._hotels.push(hotel);
     }
 
     sortedHotels(){
