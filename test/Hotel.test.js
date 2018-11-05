@@ -82,8 +82,6 @@ describe('Hotel', ()=>{
             ]
           }
 
-          object = JSON.stringify(object, null, 2);
-
-        expect(hotel.toJSON()).to.equal(object);
+        expect(hotel.toJSON()).to.deep.equal(object);
     })
 })

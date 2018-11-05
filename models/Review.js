@@ -19,14 +19,11 @@ class Review {
 
     toJSON(){
         var object = {
-            "rating": this.rating,
-            "text": this.text,
-            "date": this.date.toISOString(),
-            "ratingAsStars": this.ratingAsStars(),
+            rating: this.rating,
+            text: this.text,
+            date: this.date.toISOString(),
+            ratingAsStars: this.ratingAsStars(),
         }
-        object = JSON.stringify(object, null, 2);
-
-
         return object;
     }
 }

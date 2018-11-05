@@ -28,9 +28,8 @@ describe('Review', ()=>{
             "date":"2018-12-17T00:00:00.000Z",
             "ratingAsStars":"⭐️⭐️⭐️⭐️⭐️",
           }
-        
-        object = JSON.stringify(object, null, 2);
-          expect(review.toJSON()).to.equal(object);
+    
+          expect(review.toJSON()).to.deep.equal(object);
 
     })
 })
