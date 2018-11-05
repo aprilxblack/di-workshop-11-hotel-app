@@ -49,6 +49,33 @@ class Hotel{
     addReview(review){
         this.reviews.push(review);
     }
+
+    toJSON(){
+        var object = {
+            "name":this.name,
+            "city":this.city,
+            "reviewCount":this.reviewCount(),
+            "rating":this.rating(),
+            "ratingAsStars":this.ratingAsStars(),
+            "urlSlug":this.urlSlug(),
+            "reviews":[]
+          }
+
+        for(var i = 0; i < this.reviews.length; i++){
+            var reviewObject = {
+                "rating": this.reviews[i].rating,
+                "text": this.reviews[i].text,
+                "date": this.reviews[i].date.toISOString(),
+                "ratingAsStars": this.reviews[i].ratingAsStars(),
+            }
+
+            object.reviews.push(reviewObject);
+        }
+
+        object = JSON.stringify(object, null, 2);
+
+        return object;
+    }
 }
 
 module.exports = Hotel;

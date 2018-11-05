@@ -52,4 +52,38 @@ describe('Hotel', ()=>{
 
         expect(hotel.ratingAsStars()).to.equal("⭐️⭐️⭐️");
     })
+    it('should return correctly formatted JSON string', ()=>{
+        var hotel = new Hotel("Hilton Metropole", "London");
+        var review1 = new Review(5, "Excellent hotel, very clean", "2018-12-17");
+        var review2 = new Review(1, "Terrible hotel, smelled of mice", "2018-01-01");
+
+        hotel.addReview(review1);
+        hotel.addReview(review2);
+
+        var object = {
+            "name":"Hilton Metropole",
+            "city":"London",
+            "reviewCount":2,
+            "rating":3,
+            "ratingAsStars":"⭐️⭐️⭐️",
+            "urlSlug":"hilton_metropole_london",
+            "reviews":[
+              {
+                "rating":5,
+                "text":"Excellent hotel, very clean",
+                "date":"2018-12-17T00:00:00.000Z",
+                "ratingAsStars":"⭐️⭐️⭐️⭐️⭐️",
+              },{
+                "rating":1,
+                "text":"Terrible hotel, smelled of mice",
+                "date":"2018-01-01T00:00:00.000Z",
+                "ratingAsStars":"⭐️",
+              }
+            ]
+          }
+
+          object = JSON.stringify(object, null, 2);
+
+        expect(hotel.toJSON()).to.equal(object);
+    })
 })
